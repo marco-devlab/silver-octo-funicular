@@ -21,7 +21,8 @@ export async function fetchRevenue() {
 
     const data = await sql<Revenue[]>`SELECT * FROM revenue`;
 
-    // console.log('Data fetch completed after 3 seconds.');
+    // console.log('Fetch completed after 3 seconds.');
+    // console.log(JSON.stringify(data, null, 2));
 
     return data;
   } catch (error) {
@@ -43,6 +44,9 @@ export async function fetchLatestInvoices() {
       ...invoice,
       amount: formatCurrency(invoice.amount),
     }));
+    
+    // console.log(JSON.stringify(latestInvoices, null, 2));
+
     return latestInvoices;
   } catch (error) {
     console.error('Database Error:', error);
